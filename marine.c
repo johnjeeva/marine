@@ -14,7 +14,7 @@ int main(int argc, char argv[])
 	//{
 	//check_network connectivity
 		//if network issue reconnect
-	//load all sensor values
+ 	//load all sensor  values
 		//any sensor issue report
 	//go into decision mode
 		//check for any alarm triggered like fire water etc
