@@ -10,9 +10,9 @@ typedef enum _sensor_type
 	FIRE_SENSOR = 3,
 }SENSOR_TYPE;
 
-extern int get_sensor_value(SENSOR_TYPE, SENSORS);
+extern int get_sensor_value(SENSOR_TYPE, SENSORS*);
 
-static int Temperature_and_humidity_sensor();
+static int Temperature_and_humidity_sensor(SENSORS*);
 static int Atmosphere_pressure_sensor();
 static int Water_level_sensor();
 static int Storage_box_temperature_sensor();

@@ -8,10 +8,11 @@ int main(int argc, char argv[])
 	int result = 0;
 	SENSORS sensor;
 	printf(WELCOME"\n");
-	if(get_sensor_value(TEMPERATURE_HUMIDITY,sensor))
+	if(get_sensor_value(TEMPERATURE_HUMIDITY,&sensor))
 	{
 		printf("sensor value fetching failed from main function\n");
 	}
+	printf("sensor value fetched  in main function:%s\n",sensor.temperature);
 	return 0;
 }
 
