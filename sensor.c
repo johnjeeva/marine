@@ -34,7 +34,8 @@ printf("temperature and humidity value updated\n");
 int value= analogread(0)*(5/1023)*100;
 sensor_value->temperature = value;
 sensor_value->humidity = 20;
-return value;
+printf("Temperature is %d °c",sensor_value->temperature);
+return 0;
 }
 
 static int Atmosphere_pressure_sensor(SENSORS* sensor_value)
