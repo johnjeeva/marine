@@ -31,9 +31,10 @@ extern int get_sensor_value(SENSOR_TYPE type, SENSORS *sensor_value)
 static int Temperature_and_humidity_sensor(SENSORS* sensor_value)
 {
 printf("temperature and humidity value updated\n");
-sensor_value->temperature = 10;
+int value= analogread(0)*(5/1023)*100;
+sensor_value->temperature = value;
 sensor_value->humidity = 20;
-return 0;
+return value;
 }
 
 static int Atmosphere_pressure_sensor(SENSORS* sensor_value)
