@@ -34,7 +34,7 @@ printf("temperature and humidity value updated\n");
 int value= analogread(0)*(5/1023)*100;
 sensor_value->temperature = value;
 sensor_value->humidity = 20;
-printf("Temperature is %d °c",sensor_value->temperature);
+printf("Temperature  is %d °c",sensor_value->temperature);
 return 0;
 }
 
