@@ -10,8 +10,24 @@
 #include"controls.h"
 int main(int argc, char argv[])
 {
+	//while(1)
+	//{
+	//check_network connectivity
+		//if network issue reconnect
+ 	//load all sensor  values
+		//any sensor issue report
+	//go into decision mode
+		//check for any alarm triggered like fire water etc
+	//update display in diferent thread less prority
+		//update all sensor data in display
+	//push data to cloud
+		//getting update sucess status
+	//receive input from cloud in different thread
+		//must be event trigger call back high priority
+	//}
 	int result = 0;
 	SENSORS sensor;
+	memset(&sensor, 0, sizeof(SENSORS));
 	printf("\n"WELCOME"\n");
 	if(get_sensor_value(ALL,&sensor))
 	{
