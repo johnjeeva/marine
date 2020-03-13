@@ -32,10 +32,15 @@ extern int get_sensor_value(SENSOR_TYPE type, SENSORS *sensor_value)
 static int Temperature_and_humidity_sensor(SENSORS* sensor_value)
 {
 printf("temperature and humidity value updated\n");
-int value= analogread(0)*(5/1023)*100;
-sensor_value->temperature = value;
-sensor_value->humidity = 20;
+///////TSETED CODE WITH DHT!! SENSOR///////////////
+DHT dht(2, DHT11);/// selecting the Digital PIN 2 to connect to dataline of DHT11 and DHT TYPE as DHT11 sensor 
+dht.begin();//// Making the PIN 2 as input pin also setting up internal pullup resistor
+float humidity = dht.readHumidity(); ///getting humidity value
+float temperature = dht.readTemperature();///getting Temperature value
+sensor_value->temperature = temperature;
+sensor_value->humidity = humidity;
 printf("Temperature  is %d °c",sensor_value->temperature);
+printf("Temperature  is %d °c",sensor_value->humidity);
 return 0;
 }
 
