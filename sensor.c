@@ -1,6 +1,7 @@
 #include<string.h>
 #include<stdio.h>
 #include"sensor.h"
+#include "DHT.h"
 extern int get_sensor_value(SENSOR_TYPE type, SENSORS *sensor_value)
 {
 	printf("get sensor value function invoked from sensor module:%d\n",type);
