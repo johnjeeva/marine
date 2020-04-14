@@ -32,7 +32,7 @@ extern int get_sensor_value(SENSOR_TYPE type, SENSORS *sensor_value)
 static int Temperature_and_humidity_sensor(SENSORS* sensor_value)
 {
 printf("temperature and humidity value updated\n");
-///////TSETED CODE WITH DHT!! SENSOR///////////////
+///////TESTED CODE WITH DHT!! SENSOR///////////////
 DHT dht(2, DHT11);/// selecting the Digital PIN 2 to connect to dataline of DHT11 and DHT TYPE as DHT11 sensor 
 dht.begin();//// Making the PIN 2 as input pin also setting up internal pullup resistor
 float humidity = dht.readHumidity(); ///getting humidity value
@@ -61,7 +61,8 @@ return 0;
 static int Storage_box_temperature_sensor(SENSORS* sensor_value)
 {
 printf("fish storage box temperature value updated\n");
-sensor_value->storage_box = 50;
+Float temperature= Thermistor_function(0)//// getting analog value from the 0th(first port) of adc ports
+sensor_value->storage_box = temperature;
 return 0;
 }
 
