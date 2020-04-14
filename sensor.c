@@ -61,7 +61,7 @@ return 0;
 static int Storage_box_temperature_sensor(SENSORS* sensor_value)
 {
 printf("fish storage box temperature value updated\n");
-Float temperature= Thermistor_function(0)//// getting analog value from the 0th(first port) of adc ports
+Float temperature= Thermistor_function(0);//// getting analog value from the 0th(first port) of adc ports
 sensor_value->storage_box = temperature;
 return 0;
 }
@@ -83,14 +83,16 @@ return 0;
 static int Engine_heat_sensor(SENSORS* sensor_value)
 {
 printf("engine heat value updated\n");
-sensor_value->engine_heat = 80;
+Float temperature= Thermistor_function(1);//// getting analog value from the 1th(second port) of adc ports
+sensor_value->engine_heat = temperature;//// marked value 80
 return 0;
 }
 
 static int Engine_room_fire_sensor(SENSORS* sensor_value)
 {
 printf("engine room fire sensor value updated\n");
-sensor_value->engine_room_fire = 90;
+Float temperature= Thermistor_function(2);//// getting analog value from the 2nd(third port) of adc ports
+sensor_value->engine_room_fire = temperature;/// marked value 90
 return 0;
 }
 
