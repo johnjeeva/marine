@@ -1,6 +1,7 @@
 #include<string.h>
 #include<stdio.h>
 #include"sensor.h"
+#include "DHT.h"
 extern int get_sensor_value(SENSOR_TYPE type, SENSORS *sensor_value)
 {
 	printf("get sensor value function invoked from sensor module:%d\n",type);
@@ -31,10 +32,15 @@ extern int get_sensor_value(SENSOR_TYPE type, SENSORS *sensor_value)
 static int Temperature_and_humidity_sensor(SENSORS* sensor_value)
 {
 printf("temperature and humidity value updated\n");
-int value= analogread(0)*(5/1023)*100;
-sensor_value->temperature = value;
-sensor_value->humidity = 20;
+///////TESTED CODE WITH DHT!! SENSOR///////////////
+DHT dht(2, DHT11);/// selecting the Digital PIN 2 to connect to dataline of DHT11 and DHT TYPE as DHT11 sensor 
+dht.begin();//// Making the PIN 2 as input pin also setting up internal pullup resistor
+float humidity = dht.readHumidity(); ///getting humidity value
+float temperature = dht.readTemperature();///getting Temperature value
+sensor_value->temperature = temperature;
+sensor_value->humidity = humidity;
 printf("Temperature  is %d °c",sensor_value->temperature);
+printf("Temperature  is %d °c",sensor_value->humidity);
 return 0;
 }
 
@@ -55,7 +61,8 @@ return 0;
 static int Storage_box_temperature_sensor(SENSORS* sensor_value)
 {
 printf("fish storage box temperature value updated\n");
-sensor_value->storage_box = 50;
+Float temperature= Thermistor_function(0);//// getting analog value from the 0th(first port) of adc ports
+sensor_value->storage_box = temperature;
 return 0;
 }
 
@@ -76,14 +83,16 @@ return 0;
 static int Engine_heat_sensor(SENSORS* sensor_value)
 {
 printf("engine heat value updated\n");
-sensor_value->engine_heat = 80;
+Float temperature= Thermistor_function(1);//// getting analog value from the 1th(second port) of adc ports
+sensor_value->engine_heat = temperature;//// marked value 80
 return 0;
 }
 
 static int Engine_room_fire_sensor(SENSORS* sensor_value)
 {
 printf("engine room fire sensor value updated\n");
-sensor_value->engine_room_fire = 90;
+Float temperature= Thermistor_function(2);//// getting analog value from the 2nd(third port) of adc ports
+sensor_value->engine_room_fire = temperature;/// marked value 90
 return 0;
 }
 
